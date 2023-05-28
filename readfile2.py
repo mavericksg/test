@@ -2,7 +2,7 @@ import re
 
 input_string = ""
 
-print("1. reading input file ... CONTENT LENGTH=" + str(len(input_string)))
+print("1. reading input file ...")
 with open('input.xml') as f:
     while True:
         data = f.read(1024)
@@ -12,14 +12,11 @@ with open('input.xml') as f:
 
 print("2. masking debtor name ...")
 input_string = re.sub(r"<bs:Dbtr><bs:Nm>.*</bs:Nm></bs:Dbtr>", "<bs:Dbtr><bs:Nm>MASKED DEBTOR NAME</bs:Nm></bs:Dbtr>", input_string)
-print("   done. CONTENT LENGTH=" + str(len(input_string)))
 
 print("3. masking ultimate creditor ...")
 input_string = re.sub(r"<bs:UltmtCdtr><bs:Nm>.*</bs:Nm></bs:UltmtCdtr>", "<bs:UltmtCdtr><bs:Nm>MASKED ULTIMATE CREDIOR NAME</bs:Nm></bs:UltmtCdtr>", input_string)
-print("   done. CONTENT LENGTH=" + str(len(input_string)))
 
-print("   MASKING COMPLETED. CONTENT LENGTH=" + str(len(input_string)))
-
+print("   MASKING COMPLETED. content length:" + len(input_string))
 
 print("4. Writing output file.")
 
